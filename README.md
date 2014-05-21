@@ -43,7 +43,7 @@ The most popular workflow is:
 
 If you don't like the default behavior, you can always inherit the model and override some defaults:
 
-    class PasswordReset < ActiveModel::EmailConfirmation
+    class EmailConfirmation < ActiveModel::EmailConfirmation
       def email=(email)
         @email = email
         @user = Admin.find_by(email: email)
