@@ -24,7 +24,7 @@ The most popular workflow is:
       def create
         # ...
         @email_confirmation = ActiveModel::EmailConfirmation.new(user: @user)
-        UserMailer.confirm_email(@user.email, email_confirmation.token).deliver
+        UserMailer.confirm_email(@user.email, @email_confirmation.token).deliver
         # ...
       end
     end
