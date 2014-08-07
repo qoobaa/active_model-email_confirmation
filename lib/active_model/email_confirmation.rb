@@ -43,6 +43,8 @@ module ActiveModel
     end
 
     def self.verify_token(string)
+      raise TokenInvalid if string.nil?
+
       message_verifier.verify(Base64.urlsafe_decode64(string))
     rescue ActiveSupport::MessageVerifier::InvalidSignature, ArgumentError
       raise TokenInvalid

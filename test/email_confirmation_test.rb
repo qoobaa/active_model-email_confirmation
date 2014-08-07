@@ -26,7 +26,7 @@ module ActiveModel
   end
 end
 
-class EmailConfirmationTest < Test::Unit::TestCase
+class EmailConfirmationTest < Minitest::Test
   include ActiveModel::Lint::Tests
 
   def setup
@@ -67,5 +67,9 @@ class EmailConfirmationTest < Test::Unit::TestCase
 
   def test_find_raises_exception_with_non_base64_token
     assert_raises(ActiveModel::EmailConfirmation::TokenInvalid) { ActiveModel::EmailConfirmation.find("%%%%%%%%%") }
+  end
+
+  def test_find_raises_exception_with_nil_token
+    assert_raises(ActiveModel::EmailConfirmation::TokenInvalid) { ActiveModel::EmailConfirmation.find(nil) }
   end
 end
